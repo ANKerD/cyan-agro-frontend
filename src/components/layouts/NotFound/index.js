@@ -4,7 +4,7 @@ export default class extends Component {
   render() {
     return (
       <Fragment>
-        <p>Nothing found my brother</p>
+        <p>Nothing found</p>
       </Fragment>
     );
   }

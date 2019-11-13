@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -19,17 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 export default props => {
   const classes = useStyles();
-  const { REACT_APP_API_ENDPOINT: api_endpoint } = process.env;
-  // useState(false);
-
-  console.log(`${api_endpoint}/mills`, "fon");
-  useEffect(() => {
-    // fetch("https://swapi.co/api/planets/4/")
-    //   .then(res => res.json())
-    //   .then(res => this.setState({ planets: res }))
-    //   .catch(() => this.setState({ hasErrors: true }));
-  });
-
   return (
     <div className={classes.root}>
       <AppBar position="static">

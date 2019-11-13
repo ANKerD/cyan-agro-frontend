@@ -24,7 +24,6 @@ class Mill extends Component {
   }
   render() {
     if (this.state.loading) return <LinearProgress color="secondary" />;
-    if (!this.state.mill.harvests.length) return <p>Vazio</p>;
 
     const { classes } = this.props;
 

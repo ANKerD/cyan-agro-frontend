@@ -1,7 +1,15 @@
 import React, { Component, Fragment } from "react";
-import { Header, Home, Footer, Mill, Harvest, NotFound } from "./layouts/";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import {
+  Farm,
+  Footer,
+  Harvest,
+  Header,
+  Home,
+  Mill,
+  NotFound
+} from "./layouts/";
 
 export default class extends Component {
   render() {
@@ -15,6 +23,7 @@ export default class extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/mill/:id" component={Mill} />
               <Route path="/harvest/:id" component={Harvest} />
+              <Route path="/farm/:id" component={Farm} />
               <Route component={NotFound} />
             </Switch>
           </Router>
