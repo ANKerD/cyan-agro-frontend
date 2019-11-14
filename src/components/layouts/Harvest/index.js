@@ -65,6 +65,9 @@ class Harvest extends Component {
               <Typography gutterBottom variant="h5" component="h2">
                 {farm.name}
               </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                Code: {farm.id}
+              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>

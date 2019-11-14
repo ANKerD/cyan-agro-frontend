@@ -12,16 +12,15 @@ import { TableRow } from "@material-ui/core/";
 import { TableCell } from "@material-ui/core/";
 import { withStyles } from "@material-ui/core/styles/";
 import axios from "axios";
-import * as moment from "moment";
 import * as styles from "../styles";
 
-class Mill extends Component {
+class Farm extends Component {
   state = { loading: true };
   async componentDidMount() {
     const { REACT_APP_API_ENDPOINT: api_endpoint } = process.env;
     const { id } = this.props.match.params;
-    const { data: mill } = await axios.get(`${api_endpoint}/mills/${id}`);
-    this.setState({ mill, loading: false });
+    const { data: farm } = await axios.get(`${api_endpoint}/farms/${id}`);
+    this.setState({ farm, loading: false });
   }
 
   Navigation() {
@@ -31,9 +30,37 @@ class Mill extends Component {
           <Button color="primary" onClick={() => this.props.history.push("/")}>
             Home
           </Button>
-          <Button color="primary">{this.state.mill.name}</Button>
+          <Button
+            color="primary"
+            onClick={() =>
+              this.props.history.push(
+                `/mill/${this.state.farm.harvest.mill.id}`
+              )
+            }
+          >
+            {this.state.farm.harvest.mill.name}
+          </Button>
+          <Button
+            color="primary"
+            onClick={() =>
+              this.props.history.push(`/harvest/${this.state.farm.harvest.id}`)
+            }
+          >
+            {this.state.farm.harvest.id}
+          </Button>
+          <Button color="primary">{this.state.farm.name}</Button>
         </Breadcrumbs>
       </Paper>
+    );
+  }
+
+  getFieldCard(field) {
+    return (
+      <TableRow hover onClick={() => window.alert("cricked")} key={field.id}>
+        <TableCell scope="row">{field.id}</TableCell>
+        <TableCell align="right">{field.latitude}</TableCell>
+        <TableCell align="right">{field.longitude}</TableCell>
+      </TableRow>
     );
   }
 
@@ -41,12 +68,12 @@ class Mill extends Component {
     if (this.state.loading) return <LinearProgress color="secondary" />;
 
     const { classes } = this.props;
-
+    const { fields } = this.state.farm;
     let content;
-    if (!this.state.mill.harvests.length) {
+    if (!fields.length) {
       content = (
         <Typography align="center">
-          There's no harvests for this mill yet :(
+          There's no fields for this farm yet :(
         </Typography>
       );
     } else {
@@ -54,48 +81,22 @@ class Mill extends Component {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Code</TableCell>
-              <TableCell align="right">Start Date (YYYY/MM/DD)</TableCell>
-              <TableCell align="right">End Date (YYYY/MM/DD)</TableCell>
+              <TableCell>Field Code</TableCell>
+              <TableCell align="right">Latitude</TableCell>
+              <TableCell align="right">Longitude</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {this.state.mill.harvests.map(harvest => (
-              <TableRow
-                hover
-                onClick={() =>
-                  this.props.history.push(`/harvest/${harvest.id}`)
-                }
-                key={harvest.id}
-              >
-                <TableCell scope="row">{harvest.id}</TableCell>
-                <TableCell align="right">
-                  {moment(harvest.startDate).format("YYYY/MM/DD")}
-                </TableCell>
-                <TableCell align="right">
-                  {moment(harvest.endDate).format("YYYY/MM/DD")}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          <TableBody>{fields.map(field => this.getFieldCard(field))}</TableBody>
         </Table>
       );
     }
-
     return (
       <Fragment>
         {this.Navigation()}
-        <Grid className={classes.root} container spacing={5}>
-          <Grid component={Paper} item xs={12}>
-            <Typography variant="h5" align="center">
-              This is the <b>{this.state.mill.name}</b> mill.
-            </Typography>
-          </Grid>
-        </Grid>
-        <Paper className={classes.root}>{content}</Paper>
+        {content}
       </Fragment>
     );
   }
 }
 
-export default withStyles(styles)(Mill);
+export default withStyles(styles)(Farm);

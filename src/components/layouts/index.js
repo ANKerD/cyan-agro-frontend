@@ -1,8 +1,9 @@
+import Farm from "./Farm";
+import Footer from "./Footer";
+import Harvest from "./Harvest";
 import Header from "./Header";
 import Home from "./Home";
-import Harvest from "./Harvest";
-import Footer from "./Footer";
 import Mill from "./Mill";
 import NotFound from "./NotFound";
 
-export { Header, Home, Footer, Mill, Harvest, NotFound };
+export { Farm, Header, Home, Footer, Mill, Harvest, NotFound };
