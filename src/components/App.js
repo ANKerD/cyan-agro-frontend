@@ -16,9 +16,9 @@ export default class extends Component {
     return (
       <Fragment>
         <CssBaseline />
-        <Header />
-        <div style={{ padding: 10 }}>
-          <Router>
+        <Router>
+          <Header />
+          <div style={{ padding: 10 }}>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/mill/:id" component={Mill} />
@@ -26,8 +26,8 @@ export default class extends Component {
               <Route path="/farm/:id" component={Farm} />
               <Route component={NotFound} />
             </Switch>
-          </Router>
-        </div>
+          </div>
+        </Router>
         <Footer />
       </Fragment>
     );

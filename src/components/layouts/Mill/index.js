@@ -14,7 +14,7 @@ import { TableCell } from "@material-ui/core/";
 import { withStyles } from "@material-ui/core/styles/";
 import axios from "axios";
 import * as moment from "moment";
-import * as styles from "../styles";
+import styles from "../styles";
 
 class Mill extends Component {
   state = { loading: true };
@@ -99,4 +99,4 @@ class Mill extends Component {
   }
 }
 
-export default withStyles(styles)(Mill);
+export default styles(Mill);

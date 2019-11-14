@@ -11,16 +11,14 @@ import { TableHead } from "@material-ui/core/";
 import { TableBody } from "@material-ui/core/";
 import { TableRow } from "@material-ui/core/";
 import { TableCell } from "@material-ui/core/";
-import { withStyles } from "@material-ui/core/styles/";
 import axios from "axios";
-import * as styles from "../styles";
+import styles from "../styles";
 
 import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker,
-  InfoWindow
+  Marker
 } from "react-google-maps";
 
 const Map = props => {
@@ -160,4 +158,4 @@ class Farm extends Component {
   }
 }
 
-export default withStyles(styles)(Farm);
+export default styles(Farm);

@@ -12,7 +12,7 @@ import { Breadcrumbs } from "@material-ui/core/";
 import { Button } from "@material-ui/core/";
 import { withStyles } from "@material-ui/core/styles/";
 import axios from "axios";
-import * as styles from "../styles";
+import styles from "../styles";
 
 class Harvest extends Component {
   state = { loading: true };
@@ -108,4 +108,4 @@ class Harvest extends Component {
   }
 }
 
-export default withStyles(styles)(Harvest);
+export default styles(Harvest);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Fab } from "@material-ui/core/";
 import { LinearProgress } from "@material-ui/core/";
 import { Grid } from "@material-ui/core/";
 import { Typography } from "@material-ui/core/";
@@ -7,9 +8,9 @@ import { Card } from "@material-ui/core/";
 import { CardContent } from "@material-ui/core/";
 import { CardMedia } from "@material-ui/core/";
 import { CardActionArea } from "@material-ui/core/";
-import { withStyles } from "@material-ui/core/styles/";
+import Add from "@material-ui/icons/Add";
 import axios from "axios";
-import * as styles from "../styles";
+import styles from "../styles";
 
 class Home extends Component {
   state = { mills: [], loading: true };
@@ -61,9 +62,13 @@ class Home extends Component {
         >
           {this.state.mills.map(mill => this.getMillCard(mill))}
         </Grid>
+        <Fab className={classes.fab} color="secondary" variant="extended">
+          <Add />
+          Mill
+        </Fab>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Home);
+export default styles(Home);
