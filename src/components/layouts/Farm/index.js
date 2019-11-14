@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core/";
 import { Button } from "@material-ui/core/";
 import { Breadcrumbs } from "@material-ui/core/";
 import { Paper } from "@material-ui/core/";
+import { Modal } from "@material-ui/core/";
 import { Typography } from "@material-ui/core/";
 import { LinearProgress } from "@material-ui/core/";
 import { Table } from "@material-ui/core/";
@@ -14,8 +15,48 @@ import { withStyles } from "@material-ui/core/styles/";
 import axios from "axios";
 import * as styles from "../styles";
 
+import {
+  withGoogleMap,
+  withScriptjs,
+  GoogleMap,
+  Marker,
+  InfoWindow
+} from "react-google-maps";
+
+const Map = props => {
+  const position = {
+    lat: props.center.latitude,
+    lng: props.center.longitude
+  };
+  return (
+    <GoogleMap defaultZoom={10} defaultCenter={position}>
+      <Marker position={position} />
+    </GoogleMap>
+  );
+};
+
+const MapWrapped = withScriptjs(withGoogleMap(Map));
+
+const MapDisplay = props => {
+  console.log(process.env.REACT_APP_GOOGLE_KEY);
+
+  return (
+    <Modal align="center" open={props.show} onClose={props.handleClose}>
+      <div style={{ marginTop: "5%", height: "80%", width: "80%" }}>
+        <MapWrapped
+          center={props.field}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `100%` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+        />
+      </div>
+    </Modal>
+  );
+};
+
 class Farm extends Component {
-  state = { loading: true };
+  state = { loading: true, displayModal: false };
   async componentDidMount() {
     const { REACT_APP_API_ENDPOINT: api_endpoint } = process.env;
     const { id } = this.props.match.params;
@@ -56,13 +97,28 @@ class Farm extends Component {
 
   getFieldCard(field) {
     return (
-      <TableRow hover onClick={() => window.alert("cricked")} key={field.id}>
+      <TableRow
+        hover
+        onClick={() => this.handleFieldClick(field)}
+        key={field.id}
+      >
         <TableCell scope="row">{field.id}</TableCell>
         <TableCell align="right">{field.latitude}</TableCell>
         <TableCell align="right">{field.longitude}</TableCell>
       </TableRow>
     );
   }
+
+  handleFieldClick(field) {
+    this.setState({
+      selectedField: field,
+      displayModal: true
+    });
+  }
+
+  handleModalClose = () => {
+    this.setState({ displayModal: false });
+  };
 
   render() {
     if (this.state.loading) return <LinearProgress color="secondary" />;
@@ -94,6 +150,11 @@ class Farm extends Component {
       <Fragment>
         {this.Navigation()}
         {content}
+        <MapDisplay
+          handleClose={this.handleModalClose}
+          field={this.state.selectedField}
+          show={this.state.displayModal}
+        />
       </Fragment>
     );
   }

@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@material-ui/core/";
 import { Paper } from "@material-ui/core/";
 import { Typography } from "@material-ui/core/";
 import { LinearProgress } from "@material-ui/core/";
+import { Modal } from "@material-ui/core/";
 import { Table } from "@material-ui/core/";
 import { TableHead } from "@material-ui/core/";
 import { TableBody } from "@material-ui/core/";
