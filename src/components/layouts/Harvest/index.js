@@ -24,8 +24,10 @@ class Harvest extends Component {
   }
 
   Navigation() {
+    console.log("paper", styles.navigator);
+
     return (
-      <Paper elevation={0} className={this.props.paperClass}>
+      <Paper elevation={0} className={styles.navigator}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           <Button color="primary" onClick={() => this.props.history.push("/")}>
             Home
@@ -102,6 +104,12 @@ class Harvest extends Component {
             {content}
           </Grid>
         </div>
+        <Fab
+          onClick={() => this.props.history.push("/harvest/create")}
+          className={classes.fab}
+          color="secondary"
+          variant="extended"
+        >
       </Fragment>
     );
   }

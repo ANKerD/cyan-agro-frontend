@@ -20,9 +20,12 @@ const styles = withStyles(theme => ({
     minWidth: 650
   },
   fab: {
-    position: "absolute",
+    position: "fixed",
     bottom: theme.spacing(2),
     right: theme.spacing(2)
+  },
+  navigator: {
+    padding: theme.spacing(3, 2)
   }
 }));
 

@@ -56,7 +56,7 @@ export default function CreateForm(props) {
           <DomainIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Register Mill
+          {props.title}
         </Typography>
         <form onSubmit={onSubmit} className={classes.form}>
           {props.children}

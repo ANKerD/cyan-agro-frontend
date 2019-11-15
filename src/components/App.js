@@ -25,7 +25,8 @@ export default class extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/mill/create" component={MillCreate} />
               <Route path="/mill/:id" component={Mill} />
-              <Route path="/mill/:id/harvest" component={HarvestCreate} />
+              <Route path="/harvest/create/:millId" component={HarvestCreate} />
+              <Route path="/harvest/create" component={HarvestCreate} />
               <Route path="/harvest/:id" component={Harvest} />
               <Route path="/farm/:id" component={Farm} />
               <Route component={NotFound} />

@@ -95,7 +95,7 @@ class Mill extends Component {
         </Grid>
         <Paper className={classes.root}>{content}</Paper>
         <Fab
-          onClick={() => this.props.history.push("/mill/create")}
+          onClick={() => this.props.history.push("/harvest/create")}
           className={classes.fab}
           color="secondary"
           variant="extended"
