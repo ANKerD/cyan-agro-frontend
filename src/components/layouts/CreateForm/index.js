@@ -3,11 +3,9 @@ import { Avatar } from "@material-ui/core/";
 import { Button } from "@material-ui/core/";
 import { Container } from "@material-ui/core/";
 import { CssBaseline } from "@material-ui/core/";
-import { TextField } from "@material-ui/core/";
 import { Typography } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/";
 import DomainIcon from "@material-ui/icons/Domain";
-import axios from "axios";
 import ErrorDisplayer from "../ErrorDisplayer";
 
 const useStyles = makeStyles(theme => ({
