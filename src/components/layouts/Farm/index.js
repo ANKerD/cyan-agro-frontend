@@ -10,6 +10,8 @@ import { TableHead } from "@material-ui/core/";
 import { TableBody } from "@material-ui/core/";
 import { TableRow } from "@material-ui/core/";
 import { TableCell } from "@material-ui/core/";
+import { Fab } from "@material-ui/core/";
+import Add from "@material-ui/icons/Add";
 import axios from "axios";
 import styles from "../styles";
 
@@ -152,6 +154,17 @@ class Farm extends Component {
           field={this.state.selectedField}
           show={this.state.displayModal}
         />
+        <Fab
+          onClick={() =>
+            this.props.history.push(`/field/create/${this.state.farm.id}`)
+          }
+          className={classes.fab}
+          color="secondary"
+          variant="extended"
+        >
+          <Add />
+          Field
+        </Fab>
       </Fragment>
     );
   }

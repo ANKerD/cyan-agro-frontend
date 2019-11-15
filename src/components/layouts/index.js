@@ -1,4 +1,6 @@
 import Farm from "./Farm";
+import FarmCreate from "./Farm/FarmCreate";
+import FieldCreate from "./Farm/FieldCreate";
 import Footer from "./Footer";
 import Harvest from "./Harvest";
 import HarvestCreate from "./Harvest/HarvestCreate";
@@ -10,6 +12,8 @@ import NotFound from "./NotFound";
 
 export {
   Farm,
+  FarmCreate,
+  FieldCreate,
   Header,
   Home,
   Footer,

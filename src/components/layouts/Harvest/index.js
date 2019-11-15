@@ -10,6 +10,8 @@ import { CardActionArea } from "@material-ui/core/";
 import { Paper } from "@material-ui/core/";
 import { Breadcrumbs } from "@material-ui/core/";
 import { Button } from "@material-ui/core/";
+import { Fab } from "@material-ui/core/";
+import Add from "@material-ui/icons/Add";
 import axios from "axios";
 import styles from "../styles";
 
@@ -105,11 +107,16 @@ class Harvest extends Component {
           </Grid>
         </div>
         <Fab
-          onClick={() => this.props.history.push("/harvest/create")}
+          onClick={() =>
+            this.props.history.push(`/farm/create/${this.state.harvest.id}`)
+          }
           className={classes.fab}
           color="secondary"
           variant="extended"
         >
+          <Add />
+          Farm
+        </Fab>
       </Fragment>
     );
   }

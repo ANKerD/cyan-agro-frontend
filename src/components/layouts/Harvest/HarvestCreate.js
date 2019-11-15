@@ -30,10 +30,11 @@ export default function MillCreate(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [millId, setMillId] = useState("");
+  const { params } = props.match;
   const onSubmit = async () => {
     const { REACT_APP_API_ENDPOINT: api_endpoint } = process.env;
     const harvest = await axios.post(`${api_endpoint}/harvests`, {
-      millId: props.match.params.millId || millId,
+      millId: params.millId || millId,
       startDate,
       endDate
     });
@@ -43,7 +44,6 @@ export default function MillCreate(props) {
 
     props.history.push(`/harvest/${id}`);
   };
-  const { params } = props.match;
 
   const MillInput = (
     <TextField
@@ -66,7 +66,7 @@ export default function MillCreate(props) {
       onSubmit={onSubmit}
       actionText="Create Harvest!"
       title="Register Harvest"
-      icon={LocalFlorist}
+      icon={<LocalFlorist />}
     >
       {MillInput}
       <MuiPickersUtilsProvider utils={DateFnsUtils}>

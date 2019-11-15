@@ -5,7 +5,6 @@ import { Container } from "@material-ui/core/";
 import { CssBaseline } from "@material-ui/core/";
 import { Typography } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/";
-import DomainIcon from "@material-ui/icons/Domain";
 import ErrorDisplayer from "../ErrorDisplayer";
 
 const useStyles = makeStyles(theme => ({
@@ -52,9 +51,7 @@ export default function CreateForm(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <DomainIcon />
-        </Avatar>
+        <Avatar className={classes.avatar}>{props.icon}</Avatar>
         <Typography component="h1" variant="h5">
           {props.title}
         </Typography>

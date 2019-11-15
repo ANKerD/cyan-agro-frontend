@@ -22,7 +22,7 @@ export default function MillCreate(props) {
       onSubmit={onSubmit}
       actionText="Create Mill!"
       title="Register Mill"
-      icon={DomainIcon}
+      icon={<DomainIcon />}
     >
       <TextField
         variant="outlined"
