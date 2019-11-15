@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField } from "@material-ui/core/";
 import DomainIcon from "@material-ui/icons/Domain";
 import axios from "axios";
-import CreateForm from "../CreateForm";
+import CreateForm from "../Forms/CreateForm";
 
 export default function MillCreate(props) {
   const [millName, setMillName] = useState("");

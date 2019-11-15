@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField } from "@material-ui/core/";
 import BorderOuter from "@material-ui/icons/BorderOuter";
 import axios from "axios";
-import CreateForm from "../CreateForm";
+import CreateForm from "../Forms/CreateForm";
 
 const Coord = (value, setValue, rangeValue, label) => {
   return (

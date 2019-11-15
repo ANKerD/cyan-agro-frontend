@@ -13,16 +13,16 @@ import { Button } from "@material-ui/core/";
 import { Fab } from "@material-ui/core/";
 import Add from "@material-ui/icons/Add";
 import axios from "axios";
+import FilterFormData from "../Forms/FilterDataForm";
 import styles from "../styles";
 
 class Harvest extends Component {
-  state = { loading: true };
+  state = { loading: true, filter: "" };
   async componentDidMount() {
     const { REACT_APP_API_ENDPOINT: api_endpoint } = process.env;
     const { id } = this.props.match.params;
     const { data: harvest } = await axios.get(`${api_endpoint}/harvests/${id}`);
     this.setState({ harvest, loading: false });
-    console.log(harvest);
   }
 
   Navigation() {
@@ -47,6 +47,10 @@ class Harvest extends Component {
       </Paper>
     );
   }
+
+  handleChange = filter => {
+    this.setState({ filter });
+  };
 
   getFarmCard(farm) {
     const { classes } = this.props;
@@ -82,19 +86,36 @@ class Harvest extends Component {
     if (this.state.loading) return <LinearProgress color="secondary" />;
 
     const { classes } = this.props;
+
+    const farms = this.state.harvest.farms
+      .filter(
+        farm =>
+          !this.state.filter ||
+          farm.name.includes(this.state.filter) ||
+          String(farm.id) === this.state.filter
+      )
+      .map(mill => this.getFarmCard(mill));
+
     let content;
     if (!this.state.harvest.farms.length) {
       content = (
         <Typography align="center">
-          There's no farms for this harvest yet :(
+          There's no farm :( start by creating one
         </Typography>
       );
+    } else if (!farms.length) {
+      content = <Typography align="center">No Farm found</Typography>;
     } else {
-      content = this.state.harvest.farms.map(mill => this.getFarmCard(mill));
+      content = farms;
     }
+
     return (
       <Fragment>
         {this.Navigation()}
+        <FilterFormData
+          placeholder={"Filter for Harvests"}
+          onChange={this.handleChange}
+        />
         <div className={classes.root}>
           <Grid
             container

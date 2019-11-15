@@ -6,7 +6,12 @@ import { Link } from "@material-ui/core";
 
 const Footer = () => {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography
+      style={{ marginTop: 300, marginBottom: 40 }}
+      variant="body2"
+      color="textSecondary"
+      align="center"
+    >
       {"Copyright © "}
       <Link color="inherit">Cyan Agroanalytics</Link> {new Date().getFullYear()}
       {"."}
