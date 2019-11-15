@@ -17,8 +17,6 @@ const Coord = (value, setValue, rangeValue, label) => {
       label={label}
       value={value}
       onChange={({ target: { value: val } }) => {
-        console.log(val);
-        // !isNaN(ev);
         setValue(val);
       }}
     />
@@ -37,7 +35,6 @@ export default function FieldCreate(props) {
       latitude: lat,
       longitude: lng
     });
-    console.log(field);
 
     props.history.push(`/farm/${field.farmId}`);
   };

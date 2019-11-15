@@ -37,8 +37,6 @@ const Map = props => {
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 const MapDisplay = props => {
-  console.log(process.env.REACT_APP_GOOGLE_KEY);
-
   return (
     <Modal align="center" open={props.show} onClose={props.handleClose}>
       <div style={{ marginTop: "5%", height: "80%", width: "80%" }}>

@@ -26,8 +26,6 @@ class Harvest extends Component {
   }
 
   Navigation() {
-    console.log("paper", styles.navigator);
-
     return (
       <Paper elevation={0} className={styles.navigator}>
         <Breadcrumbs separator="›" aria-label="breadcrumb">
