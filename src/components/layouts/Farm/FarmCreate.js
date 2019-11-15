@@ -10,11 +10,6 @@ export default function FarmCreate(props) {
   const { params } = props.match;
   const onSubmit = async () => {
     const { REACT_APP_API_ENDPOINT: api_endpoint } = process.env;
-    console.log({
-      name: farmName,
-      harvestId: params.harvestId || harvestId
-    });
-
     const farm = await axios.post(`${api_endpoint}/farms`, {
       name: farmName,
       harvestId: params.harvestId || harvestId
