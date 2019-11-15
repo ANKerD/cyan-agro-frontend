@@ -4,10 +4,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   Farm,
   Footer,
+  HarvestCreate,
   Harvest,
   Header,
   Home,
   Mill,
+  MillCreate,
   NotFound
 } from "./layouts/";
 
@@ -21,7 +23,9 @@ export default class extends Component {
           <div style={{ padding: 10 }}>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/mill/create" component={MillCreate} />
               <Route path="/mill/:id" component={Mill} />
+              <Route path="/mill/:id/harvest" component={HarvestCreate} />
               <Route path="/harvest/:id" component={Harvest} />
               <Route path="/farm/:id" component={Farm} />
               <Route component={NotFound} />

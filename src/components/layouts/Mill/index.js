@@ -5,13 +5,13 @@ import { Breadcrumbs } from "@material-ui/core/";
 import { Paper } from "@material-ui/core/";
 import { Typography } from "@material-ui/core/";
 import { LinearProgress } from "@material-ui/core/";
-import { Modal } from "@material-ui/core/";
+import { Fab } from "@material-ui/core/";
 import { Table } from "@material-ui/core/";
 import { TableHead } from "@material-ui/core/";
 import { TableBody } from "@material-ui/core/";
 import { TableRow } from "@material-ui/core/";
 import { TableCell } from "@material-ui/core/";
-import { withStyles } from "@material-ui/core/styles/";
+import Add from "@material-ui/icons/Add";
 import axios from "axios";
 import * as moment from "moment";
 import styles from "../styles";
@@ -94,6 +94,15 @@ class Mill extends Component {
           </Grid>
         </Grid>
         <Paper className={classes.root}>{content}</Paper>
+        <Fab
+          onClick={() => this.props.history.push("/mill/create")}
+          className={classes.fab}
+          color="secondary"
+          variant="extended"
+        >
+          <Add />
+          Harvest
+        </Fab>
       </Fragment>
     );
   }

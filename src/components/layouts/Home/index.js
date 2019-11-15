@@ -13,7 +13,7 @@ import axios from "axios";
 import styles from "../styles";
 
 class Home extends Component {
-  state = { mills: [], loading: true };
+  state = { loading: true };
 
   getMillCard(mill) {
     const { classes } = this.props;
@@ -62,7 +62,12 @@ class Home extends Component {
         >
           {this.state.mills.map(mill => this.getMillCard(mill))}
         </Grid>
-        <Fab className={classes.fab} color="secondary" variant="extended">
+        <Fab
+          onClick={() => this.props.history.push("/mill/create")}
+          className={classes.fab}
+          color="secondary"
+          variant="extended"
+        >
           <Add />
           Mill
         </Fab>
