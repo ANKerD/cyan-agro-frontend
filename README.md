@@ -1,3 +1,18 @@
+# Cyan-Agro-Frontend
+
+### How to run
+
+1. create configuration file `.env` based on `.env.example`
+2. type `npm start` on the terminal to open in development mode.
+
+#### Enviroment variables
+
+Details of each required enviroment variable.
+
+- **REACT_APP_API_ENDPOINT**: is the REST API which is going to serve the data. [Check the repo](https://github.com/ANKerD/cyan-agro-backend)
+- **REACT_APP_GOOGLE_KEY**: is the API key used for querying google maps API. [You get get one here](https://developers.google.com/maps/documentation/javascript/get-api-key)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
